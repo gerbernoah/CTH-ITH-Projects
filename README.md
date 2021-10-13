@@ -5,7 +5,7 @@ This repository contains all projects of the subjects CT-H and IT-H-Labor.
 ## Authors
 * Noah Gerber
 * Nils Osswald
-* Abdul-Malik Deniz
+* Abdulmalik Deniz
 
 ## Tree
 ```bash
