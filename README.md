@@ -22,5 +22,10 @@ CTH-ITH-Projects
 │
 └───IT-H-Labor
     ├───Projekt_1
+    │       Projekt_1_Aufgabe.pdf
+    │
     └───Projekt_2
+            Projekt_2_Aufgabe.pdf
+            Timer.pdsprj
+            Zaehlschleife.pdsprj
 ```
