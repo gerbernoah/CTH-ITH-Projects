@@ -1,0 +1,103 @@
+C51 COMPILER V9.60.0.0   AMPELSTEUERUNG                                                    12/05/2021 17:43:29 PAGE 1   
+
+
+C51 COMPILER V9.60.0.0, COMPILATION OF MODULE AMPELSTEUERUNG
+OBJECT MODULE PLACED IN .\Objects\AmpelSteuerung.obj
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE AmpelSteuerung.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Lis
+                    -tings\AmpelSteuerung.lst) TABS(2) OBJECT(.\Objects\AmpelSteuerung.obj)
+
+line level    source
+
+   1          #include <reg51.h>
+   2          #include <stdio.h>
+   3          
+   4          sbit led_red = 0xA0;
+   5          sbit led_yellow = 0xA1;
+   6          sbit led_green = 0xA2;
+   7          
+   8          void Delay(unsigned int seconds);
+   9          void DelayWithTimer(unsigned int seconds);
+  10          void DelayWithLoop(unsigned int seconds);
+  11          void SetLEDState(bit red, bit yellow, bit green);
+  12          
+  13          void main(void)
+  14           { 
+  15   1          while(1) // infinite loop
+  16   1          {
+  17   2              SetLEDState(1, 0, 0);
+  18   2              Delay(2);
+  19   2              SetLEDState(1, 1, 0);
+  20   2              Delay(1);
+  21   2              SetLEDState(0, 0, 1);
+  22   2              Delay(4);
+  23   2              SetLEDState(0, 1, 0);
+  24   2              Delay(1);
+  25   2          }
+  26   1      }
+  27          
+  28          void Delay(unsigned int seconds)
+  29          {
+  30   1        //DelayWithLoop(seconds);
+  31   1        DelayWithTimer(seconds);
+  32   1      }
+  33          void DelayWithTimer(unsigned int seconds)
+  34          {
+  35   1          unsigned int i;
+  36   1        
+  37   1          TMOD = 0x10; // timer 1 mode 1
+  38   1         
+  39   1          for (; seconds > 0; --seconds)
+  40   1          {
+  41   2              for (i = 0; i < 20; ++i) // delay of 1 second
+  42   2              {
+  43   3                  // 0x3CB0: 50 ms timer
+  44   3                  TH1 = 0x3C; // set timer high flag
+  45   3                  TL1 = 0xB0; // set timer low flag
+  46   3      
+  47   3                  TR1 = 1; // start timer
+  48   3           
+  49   3                  while (~TF1) { } // wait until timer finished
+  50   3           
+  51   3                  TR1 = 0; // stop timer
+  52   3                  TF1 = 0; // reset timer flag
+  53   3              }
+  54   2          }
+C51 COMPILER V9.60.0.0   AMPELSTEUERUNG                                                    12/05/2021 17:43:29 PAGE 2   
+
+  55   1      }
+  56          
+  57          void DelayWithLoop(unsigned int seconds)
+  58          {
+  59   1        
+  60   1         unsigned int i;
+  61   1         unsigned int j;
+  62   1      
+  63   1         for (; seconds > 0; seconds--)
+  64   1         {
+  65   2              for (i = 0; i < 9550; i++)
+  66   2              {
+  67   3                  for (j = 0; j < 12; j++) { }
+  68   3              }
+  69   2         }
+  70   1      }
+  71          
+  72          void SetLEDState(bit red, bit yellow, bit green)
+  73          {
+  74   1         led_red = red;
+  75   1         led_yellow = yellow;
+  76   1         led_green = green;
+  77   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    178    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----       3
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

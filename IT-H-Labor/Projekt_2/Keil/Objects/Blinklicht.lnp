@@ -1,0 +1,4 @@
+".\Objects\STARTUP.obj",
+".\Objects\Blinklicht.obj" 
+TO ".\Objects\Blinklicht" 
+PRINT(".\Listings\Blinklicht.m51") RAMSIZE(256) 

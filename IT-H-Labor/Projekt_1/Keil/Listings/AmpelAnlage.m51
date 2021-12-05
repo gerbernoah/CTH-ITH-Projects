@@ -1,0 +1,206 @@
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                    12/05/2021  17:43:41  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22.2.0, INVOKED BY:
+C:\KEIL_V5\C51\BIN\BL51.EXE .\Objects\STARTUP.obj, .\Objects\AmpelSteuerung.obj TO .\Objects\AmpelAnlage PRINT (.\Listin
+>> gs\AmpelAnlage.m51) RAMSIZE (256)
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  .\Objects\STARTUP.obj (?C_STARTUP)
+  .\Objects\AmpelSteuerung.obj (AMPELSTEUERUNG)
+
+
+LINK MAP OF MODULE:  .\Objects\AmpelAnlage (?C_STARTUP)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+                    0008H     0018H                  *** GAP ***
+            BIT     0020H.0   0000H.3   UNIT         _BIT_GROUP_
+                    0020H.3   0000H.5                *** GAP ***
+            IDATA   0021H     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+                    0003H     07FDH                  *** GAP ***
+            CODE    0800H     0042H     UNIT         ?PR?MAIN?AMPELSTEUERUNG
+            CODE    0842H     0033H     UNIT         ?PR?_DELAYWITHTIMER?AMPELSTEUERUNG
+            CODE    0875H     002DH     UNIT         ?PR?_DELAYWITHLOOP?AMPELSTEUERUNG
+            CODE    08A2H     000DH     UNIT         ?PR?SETLEDSTATE?AMPELSTEUERUNG
+            CODE    08AFH     000CH     UNIT         ?C_C51STARTUP
+            CODE    08BBH     0003H     UNIT         ?PR?_DELAY?AMPELSTEUERUNG
+
+
+
+OVERLAY MAP OF MODULE:   .\Objects\AmpelAnlage (?C_STARTUP)
+
+
+SEGMENT                                       BIT_GROUP 
+  +--> CALLED SEGMENT                      START    LENGTH
+----------------------------------------------------------
+?C_C51STARTUP                              -----    -----
+  +--> ?PR?MAIN?AMPELSTEUERUNG
+
+?PR?MAIN?AMPELSTEUERUNG                    -----    -----
+  +--> ?PR?SETLEDSTATE?AMPELSTEUERUNG
+  +--> ?PR?_DELAY?AMPELSTEUERUNG
+
+?PR?SETLEDSTATE?AMPELSTEUERUNG             0020H.0  0000H.3
+
+?PR?_DELAY?AMPELSTEUERUNG                  -----    -----
+  +--> ?PR?_DELAYWITHTIMER?AMPELSTEUERUNG
+
+
+
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  12/05/2021  17:43:41  PAGE 2
+
+
+SYMBOL TABLE OF MODULE:  .\Objects\AmpelAnlage (?C_STARTUP)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        ?C_STARTUP
+  C:08AFH         SEGMENT       ?C_C51STARTUP
+  I:0021H         SEGMENT       ?STACK
+  C:0000H         PUBLIC        ?C_STARTUP
+  D:00E0H         SYMBOL        ACC
+  D:00F0H         SYMBOL        B
+  D:0083H         SYMBOL        DPH
+  D:0082H         SYMBOL        DPL
+  N:0000H         SYMBOL        IBPSTACK
+  N:0100H         SYMBOL        IBPSTACKTOP
+  N:0080H         SYMBOL        IDATALEN
+  C:08B2H         SYMBOL        IDATALOOP
+  N:0000H         SYMBOL        PBPSTACK
+  N:0100H         SYMBOL        PBPSTACKTOP
+  N:0000H         SYMBOL        PDATALEN
+  N:0000H         SYMBOL        PDATASTART
+  N:0000H         SYMBOL        PPAGE
+  N:0000H         SYMBOL        PPAGEENABLE
+  D:00A0H         SYMBOL        PPAGE_SFR
+  D:0081H         SYMBOL        SP
+  C:08AFH         SYMBOL        STARTUP1
+  N:0000H         SYMBOL        XBPSTACK
+  N:0000H         SYMBOL        XBPSTACKTOP
+  N:0000H         SYMBOL        XDATALEN
+  N:0000H         SYMBOL        XDATASTART
+  C:0000H         LINE#         126
+  C:08AFH         LINE#         133
+  C:08B1H         LINE#         134
+  C:08B2H         LINE#         135
+  C:08B3H         LINE#         136
+  C:08B5H         LINE#         185
+  C:08B8H         LINE#         196
+  -------         ENDMOD        ?C_STARTUP
+
+  -------         MODULE        AMPELSTEUERUNG
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  C:08A2H         PUBLIC        SetLEDState
+  C:0842H         PUBLIC        _DelayWithTimer
+  C:0800H         PUBLIC        main
+  B:00A0H.2       PUBLIC        led_green
+  C:0875H         PUBLIC        _DelayWithLoop
+  D:0089H         PUBLIC        TMOD
+  B:00A0H.1       PUBLIC        led_yellow
+  B:0088H.7       PUBLIC        TF1
+  D:008DH         PUBLIC        TH1
+  D:008BH         PUBLIC        TL1
+  B:00A0H.0       PUBLIC        led_red
+  B:0088H.6       PUBLIC        TR1
+  C:08BBH         PUBLIC        _Delay
+  -------         PROC          MAIN
+  C:0800H         LINE#         13
+  C:0800H         LINE#         14
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  12/05/2021  17:43:41  PAGE 3
+
+
+  C:0800H         LINE#         15
+  C:0800H         LINE#         16
+  C:0800H         LINE#         17
+  C:0809H         LINE#         18
+  C:0810H         LINE#         19
+  C:0819H         LINE#         20
+  C:0820H         LINE#         21
+  C:0829H         LINE#         22
+  C:0830H         LINE#         23
+  C:0839H         LINE#         24
+  C:0840H         LINE#         25
+  -------         ENDPROC       MAIN
+  -------         PROC          _DELAY
+  D:0006H         SYMBOL        seconds
+  C:08BBH         LINE#         28
+  C:08BBH         LINE#         29
+  C:08BBH         LINE#         31
+  -------         ENDPROC       _DELAY
+  -------         PROC          _DELAYWITHTIMER
+  D:0006H         SYMBOL        seconds
+  -------         DO            
+  D:0004H         SYMBOL        i
+  -------         ENDDO         
+  C:0842H         LINE#         33
+  C:0842H         LINE#         34
+  C:0842H         LINE#         37
+  C:0845H         LINE#         39
+  C:084EH         LINE#         40
+  C:084EH         LINE#         41
+  C:0851H         LINE#         42
+  C:0851H         LINE#         44
+  C:0854H         LINE#         45
+  C:0857H         LINE#         47
+  C:0859H         LINE#         49
+  C:085EH         LINE#         51
+  C:0860H         LINE#         52
+  C:0862H         LINE#         53
+  C:086DH         LINE#         54
+  C:0874H         LINE#         55
+  -------         ENDPROC       _DELAYWITHTIMER
+  -------         PROC          _DELAYWITHLOOP
+  D:0006H         SYMBOL        seconds
+  -------         DO            
+  D:0004H         SYMBOL        i
+  D:0002H         SYMBOL        j
+  -------         ENDDO         
+  C:0875H         LINE#         57
+  C:0875H         LINE#         58
+  C:0875H         LINE#         63
+  C:087EH         LINE#         64
+  C:087EH         LINE#         65
+  C:0881H         LINE#         66
+  C:0881H         LINE#         67
+  C:088FH         LINE#         68
+  C:089AH         LINE#         69
+  C:08A1H         LINE#         70
+  -------         ENDPROC       _DELAYWITHLOOP
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  12/05/2021  17:43:41  PAGE 4
+
+
+  -------         PROC          SETLEDSTATE
+  B:0020H.0       SYMBOL        red
+  B:0020H.1       SYMBOL        yellow
+  B:0020H.2       SYMBOL        green
+  C:08A2H         LINE#         72
+  C:08A2H         LINE#         73
+  C:08A2H         LINE#         74
+  C:08A6H         LINE#         75
+  C:08AAH         LINE#         76
+  C:08AEH         LINE#         77
+  -------         ENDPROC       SETLEDSTATE
+  -------         ENDMOD        AMPELSTEUERUNG
+
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_DELAYWITHLOOP?AMPELSTEUERUNG
+
+******************************************************************************
+* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 00C1H BYTE ( 9%) *
+******************************************************************************
+
+Program Size: data=9.3 xdata=0 code=193
+LINK/LOCATE RUN COMPLETE.  1 WARNING(S),  0 ERROR(S)

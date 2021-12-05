@@ -1,0 +1,4 @@
+".\Objects\STARTUP.obj",
+".\Objects\AmpelSteuerung.obj" 
+TO ".\Objects\AmpelAnlage" 
+PRINT(".\Listings\AmpelAnlage.m51") RAMSIZE(256) 
