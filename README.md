@@ -3,9 +3,11 @@ This repository contains all projects of the subjects CT-H and IT-H-Labor.
 (TGI-J2 at [GWS-Loerrach](http://www.gws-loerrach.de/))
 
 ## Contributors
-* Noah Gerber
-* Nils Osswald
-* Abdulmalik Deniz
+<img src="https://avatars.githubusercontent.com/u/47790983" alt="drawing" width="24"/> [Noah Gerber](https://github.com/hallojuhu)
+
+<img src="https://avatars.githubusercontent.com/u/58339645" alt="drawing" width="24"/> [Nils Osswald](https://github.com/7rebux)
+
+<img src="https://avatars.githubusercontent.com/u/82161986" alt="drawing" width="24"/> [Abdulmalik Deniz](https://github.com/Indianmicrosoftsupport)
 
 ## CT-H
 | Project | Title | Code |
