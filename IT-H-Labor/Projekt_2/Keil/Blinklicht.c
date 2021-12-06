@@ -19,22 +19,22 @@ void Aufgabe2a()
 	unsigned int i;
 	TMOD = 0x10; // timer 1 mode 1
 	
-	while(1)
+	while(1) // infinite loop
 	{
-		LED = ~LED;  
+		LED = ~LED; // invert LED
    
 		for (i = 0; i < 20; i++) // delay of 1 second
 		{
-				// 0x3CB0: 50 ms timer
-				TH1 = 0x3C; // set timer high flag
-				TL1 = 0xB0; // set timer low flag
+		    // 0x3CB0: 50 ms timer
+			TH1 = 0x3C; // set timer high flag
+			TL1 = 0xB0; // set timer low flag
 
-				TR1 = 1; // start timer
+			TR1 = 1; // start timer
  
-				while (~TF1) { } // wait until timer finished
+			while (~TF1) { } // wait until timer finished
  
-				TR1 = 0; // stop timer
-				TF1 = 0; // reset timer flag
+			TR1 = 0; // stop timer
+			TF1 = 0; // reset timer flag
 		}
 	}
 }
@@ -43,7 +43,7 @@ void Aufgabe2a()
 //Delay zu 2b und 3
 void Delay(unsigned int seconds)
 {
-		unsigned int i;
+	unsigned int i;
 	
     TMOD = 0x10; // timer 1 mode 1
    
@@ -71,7 +71,7 @@ void Aufgabe2b()
 {	
 	while(1)
 	{
-		LED = ~LED;  
+		LED = ~LED; // invert led  
 		Delay(1);
 	}
 }
