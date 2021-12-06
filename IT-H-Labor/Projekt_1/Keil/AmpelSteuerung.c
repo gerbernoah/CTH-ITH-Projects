@@ -11,7 +11,7 @@ void DelayWithLoop(unsigned int seconds);
 void SetLEDState(bit red, bit yellow, bit green);
 
 void main(void)
- { 
+{ 
     while(1) // infinite loop
     {
         SetLEDState(1, 0, 0);
@@ -25,14 +25,17 @@ void main(void)
     }
 }
 
+// small helper function to decide whether to use 
+// timer delay or loop delay
 void Delay(unsigned int seconds)
 {
-	//DelayWithLoop(seconds);
-	DelayWithTimer(seconds);
+    //DelayWithLoop(seconds);
+    DelayWithTimer(seconds);
 }
+
 void DelayWithTimer(unsigned int seconds)
 {
-		unsigned int i;
+    unsigned int i;
 	
     TMOD = 0x10; // timer 1 mode 1
    
@@ -56,22 +59,21 @@ void DelayWithTimer(unsigned int seconds)
 
 void DelayWithLoop(unsigned int seconds)
 {
-	
-	 unsigned int i;
-	 unsigned int j;
+    unsigned int i;
+    unsigned int j;
 
-   for (; seconds > 0; seconds--)
-   {
+    for (; seconds > 0; seconds--)
+    {
         for (i = 0; i < 9550; i++)
         {
             for (j = 0; j < 12; j++) { }
         }
-   }
+    }
 }
 
 void SetLEDState(bit red, bit yellow, bit green)
 {
-   led_red = red;
-   led_yellow = yellow;
-   led_green = green;
+    led_red = red;
+    led_yellow = yellow;
+    led_green = green;
 }
