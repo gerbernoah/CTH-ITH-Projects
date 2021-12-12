@@ -7,6 +7,7 @@
 #include <reg51.h>
 #include <stdio.h>
 
+//ablage der codes
 unsigned int codes[4][3] = {
 	{ 9, 0, 3 },
 	{ 2, 4, 7 },
@@ -14,30 +15,27 @@ unsigned int codes[4][3] = {
 	{ 1, 6, 3 }
 };
 
-sfr input = 0x90;
-sfr output = 0xA0;
-
-sbit input_submit = P3^2;
-sbit dip_submit = P3^3;
+sfr input = 0x90;	//input equals Port 1
+sfr output = 0xA0; //output equals Port 2
 
 sbit led_true = P3^0;
 sbit led_false = P3^1;
+sbit input_submit = P3^2;
+sbit dip_submit = P3^3;
 
-int selected_index;
-unsigned int input_count;
-unsigned int error_count;
+unsigned int selected_index;
 unsigned int real_digit;
+unsigned int input_count;
+unsigned int error;
 
-void Check();
-void Show(int);
-int GetIndex();
-int GetSelectedDigit();
+void Pruefe();
+int HoleWert();
 
 void main()
 { 
-	led_false = led_true = input_count = error_count = output = 0; //reset variables and outputs
+	led_false = led_true = input_count = error = output = 0; //reset variables and outputs
 
-	while (dip_submit) { } // stay here if no code is selected
+	while (dip_submit); // stay here until code is submited
 	selected_index = input >> 4; //return dip state
 
 	while (1)
@@ -46,28 +44,28 @@ void main()
 		{
 			output = input; // set output to input
 		}
-		Check(); // check if input was successful
+		Pruefe(); // check if input was successful
 	}
 }
 
-void Check()
+void Pruefe()
 {	
-	if (input_count < 3)
-	{
-		real_digit = codes[selected_index][input_count];
-
-		if (output != real_digit) // increment error count if code wrong
-			error_count++; 
-	}
+	if (output != HoleWert()) // increment error count if code wrong
+		error = 1; 
 
 	if (input_count == 2)
 	{
-		led_false = (error_count > 0);
-		led_true = (error_count == 0);
+		led_false = error;
+		led_true = ~error;
 		
 		while (1); // stay here forever
 	}
 	
 	input_count++; // increment input count
 	while (!input_submit); //wait until submit released
+}
+
+int HoleWert()
+{
+	return codes[selected_index][input_count];
 }

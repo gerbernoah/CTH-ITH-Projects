@@ -1,4 +1,4 @@
-BL51 BANKED LINKER/LOCATER V6.22.2.0                                                    12/08/2021  14:47:51  PAGE 1
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                    12/12/2021  20:23:12  PAGE 1
 
 
 BL51 BANKED LINKER/LOCATER V6.22.2.0, INVOKED BY:
@@ -30,9 +30,10 @@ LINK MAP OF MODULE:  .\Objects\Codeschloss (?C_STARTUP)
             CODE    0000H     0003H     ABSOLUTE     
                     0003H     07FDH                  *** GAP ***
             CODE    0800H     008CH     UNIT         ?C_C51STARTUP
-            CODE    088CH     0065H     UNIT         ?PR?CHECK?MAIN
-            CODE    08F1H     0029H     UNIT         ?PR?MAIN?MAIN
-            CODE    091AH     001BH     UNIT         ?C_INITSEG
+            CODE    088CH     003CH     UNIT         ?PR?PRUEFE?MAIN
+            CODE    08C8H     0029H     UNIT         ?PR?MAIN?MAIN
+            CODE    08F1H     001BH     UNIT         ?C_INITSEG
+            CODE    090CH     0015H     UNIT         ?PR?HOLEWERT?MAIN
 
 
 
@@ -47,7 +48,10 @@ SEGMENT
   +--> ?C_INITSEG
 
 ?PR?MAIN?MAIN
-  +--> ?PR?CHECK?MAIN
+  +--> ?PR?PRUEFE?MAIN
+
+?PR?PRUEFE?MAIN
+  +--> ?PR?HOLEWERT?MAIN
 
 
 
@@ -55,13 +59,13 @@ SYMBOL TABLE OF MODULE:  .\Objects\Codeschloss (?C_STARTUP)
 
   VALUE           TYPE          NAME
   ----------------------------------
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  12/12/2021  20:23:12  PAGE 2
+
+
 
   -------         MODULE        ?C_STARTUP
   C:0800H         SEGMENT       ?C_C51STARTUP
   I:0028H         SEGMENT       ?STACK
-BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  12/08/2021  14:47:51  PAGE 2
-
-
   C:0000H         PUBLIC        ?C_STARTUP
   D:00E0H         SYMBOL        ACC
   D:00F0H         SYMBOL        B
@@ -99,58 +103,61 @@ SYMBOL TABLE OF MODULE:  .\Objects\Codeschloss (?C_STARTUP)
   D:0008H         PUBLIC        codes
   D:0020H         PUBLIC        real_digit
   B:00B0H.1       PUBLIC        led_false
-  C:08F1H         PUBLIC        main
+  C:08C8H         PUBLIC        main
   B:00B0H.2       PUBLIC        input_submit
+  D:0022H         PUBLIC        error
+  C:090CH         PUBLIC        HoleWert
   D:0090H         PUBLIC        input
   D:00A0H         PUBLIC        output
   B:00B0H.3       PUBLIC        dip_submit
-  D:0022H         PUBLIC        error_count
   D:0024H         PUBLIC        input_count
   D:0026H         PUBLIC        selected_index
   B:00B0H.0       PUBLIC        led_true
-  C:088CH         PUBLIC        Check
+  C:088CH         PUBLIC        Pruefe
   -------         PROC          MAIN
-  C:08F1H         LINE#         36
-  C:08F1H         LINE#         37
-  C:08F1H         LINE#         38
-  C:0900H         LINE#         40
-  C:0903H         LINE#         41
-  C:090DH         LINE#         43
-  C:090DH         LINE#         44
-  C:090DH         LINE#         45
-  C:0910H         LINE#         46
-BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  12/08/2021  14:47:51  PAGE 3
+  C:08C8H         LINE#         34
+  C:08C8H         LINE#         35
+  C:08C8H         LINE#         36
+  C:08D7H         LINE#         38
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  12/12/2021  20:23:12  PAGE 3
 
 
-  C:0910H         LINE#         47
-  C:0913H         LINE#         48
-  C:0915H         LINE#         49
-  C:0918H         LINE#         50
+  C:08DAH         LINE#         39
+  C:08E4H         LINE#         41
+  C:08E4H         LINE#         42
+  C:08E4H         LINE#         43
+  C:08E7H         LINE#         44
+  C:08E7H         LINE#         45
+  C:08EAH         LINE#         46
+  C:08ECH         LINE#         47
+  C:08EFH         LINE#         48
   -------         ENDPROC       MAIN
-  -------         PROC          CHECK
+  -------         PROC          PRUEFE
+  C:088CH         LINE#         51
+  C:088CH         LINE#         52
   C:088CH         LINE#         53
-  C:088CH         LINE#         54
-  C:088CH         LINE#         55
-  C:0897H         LINE#         56
-  C:0897H         LINE#         57
-  C:08ADH         LINE#         59
-  C:08B6H         LINE#         60
-  C:08BEH         LINE#         61
-  C:08BEH         LINE#         63
-  C:08C6H         LINE#         64
-  C:08C6H         LINE#         65
-  C:08D7H         LINE#         66
-  C:08E3H         LINE#         68
-  C:08E5H         LINE#         69
-  C:08E5H         LINE#         71
-  C:08EDH         LINE#         72
-  C:08F0H         LINE#         73
-  -------         ENDPROC       CHECK
+  C:0898H         LINE#         54
+  C:089EH         LINE#         56
+  C:08A6H         LINE#         57
+  C:08A6H         LINE#         58
+  C:08AEH         LINE#         59
+  C:08BAH         LINE#         61
+  C:08BCH         LINE#         62
+  C:08BCH         LINE#         64
+  C:08C4H         LINE#         65
+  C:08C7H         LINE#         66
+  -------         ENDPROC       PRUEFE
+  -------         PROC          HOLEWERT
+  C:090CH         LINE#         68
+  C:090CH         LINE#         69
+  C:090CH         LINE#         70
+  C:0920H         LINE#         71
+  -------         ENDPROC       HOLEWERT
   -------         ENDMOD        MAIN
 
 ******************************************************************************
-* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 00B7H BYTE ( 8%) *
+* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 00A3H BYTE ( 7%) *
 ******************************************************************************
 
-Program Size: data=41.0 xdata=0 code=312
+Program Size: data=41.0 xdata=0 code=292
 LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)
