@@ -1,4 +1,4 @@
-C51 COMPILER V9.60.0.0   MAIN                                                              12/13/2021 17:57:22 PAGE 1   
+C51 COMPILER V9.60.0.0   MAIN                                                              12/14/2021 09:20:04 PAGE 1   
 
 
 C51 COMPILER V9.60.0.0, COMPILATION OF MODULE MAIN
@@ -62,7 +62,7 @@ line level    source
   52          { 
   53   1        if (output != HoleWert()) // increment error count if code wrong
   54   1          error = 1; 
-C51 COMPILER V9.60.0.0   MAIN                                                              12/13/2021 17:57:22 PAGE 2   
+C51 COMPILER V9.60.0.0   MAIN                                                              12/14/2021 09:20:04 PAGE 2   
 
   55   1      
   56   1        if (input_count == 2)
