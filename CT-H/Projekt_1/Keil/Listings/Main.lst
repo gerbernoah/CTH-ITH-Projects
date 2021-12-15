@@ -1,4 +1,4 @@
-C51 COMPILER V9.60.0.0   MAIN                                                              12/14/2021 09:20:04 PAGE 1   
+C51 COMPILER V9.60.0.0   MAIN                                                              12/15/2021 21:03:00 PAGE 1   
 
 
 C51 COMPILER V9.60.0.0, COMPILATION OF MODULE MAIN
@@ -19,14 +19,14 @@ line level    source
    9          
   10          //ablage der codes
   11          unsigned int codes[4][3] = {
-  12            { 9, 0, 3 },
-  13            { 2, 4, 7 },
-  14            { 5, 1, 2 },
-  15            { 1, 6, 3 }
+  12              { 9, 0, 3 },
+  13              { 2, 4, 7 },
+  14              { 5, 1, 2 },
+  15              { 1, 6, 3 }
   16          };
   17          
-  18          sfr input = 0x90; //input equals Port 1
-  19          sfr output = 0xA0; //output equals Port 2
+  18          sfr input = 0x90;    // input equals port 1
+  19          sfr output = 0xA0;     // output equals port 2
   20          
   21          sbit led_true = P3^0;
   22          sbit led_false = P3^1;
@@ -35,60 +35,44 @@ line level    source
   25          
   26          unsigned int selected_index;
   27          unsigned int real_digit;
-  28          unsigned int input_count;
-  29          unsigned int error;
-  30          
-  31          void Pruefe();
-  32          int HoleWert();
-  33          
-  34          void main()
-  35          { 
-  36   1        led_false = led_true = input_count = error = output = 0; //reset variables and outputs
+  28          unsigned int error;
+  29          
+  30          void main()
+  31          { 
+  32   1          unsigned int i;
+  33   1          led_false = led_true = error = output = 0; // reset everything
+  34   1      
+  35   1          while (dip_submit);         // stay here until code is submited
+  36   1          selected_index = input >> 4;     //return dip state
   37   1      
-  38   1        while (dip_submit); // stay here until code is submited
-  39   1        selected_index = input >> 4; //return dip state
-  40   1      
-  41   1        while (1)
-  42   1        {
-  43   2          while (input_submit)
-  44   2          {
-  45   3            output = input; // set output to input
-  46   3          }
-  47   2          Pruefe(); // check if input was successful
-  48   2        }
-  49   1      }
-  50          
-  51          void Pruefe()
-  52          { 
-  53   1        if (output != HoleWert()) // increment error count if code wrong
-  54   1          error = 1; 
-C51 COMPILER V9.60.0.0   MAIN                                                              12/14/2021 09:20:04 PAGE 2   
+  38   1          for(i = 0; i < (sizeof(codes[selected_index]) / sizeof(int)); i++)
+  39   1          {
+  40   2              while (input_submit)
+  41   2              {
+  42   3                  output = input & 0x0F; // set output to input
+  43   3              }
+  44   2              
+  45   2              if (output != codes[selected_index][i]) // increment error count if code is wrong
+  46   2                  error = 1;
+  47   2          
+  48   2              while (!input_submit);     // wait until submit released
+  49   2          }
+  50   1          
+  51   1          led_false = error;
+  52   1          led_true = !error;
+  53   1              
+  54   1          while (1); // stay here forever
+C51 COMPILER V9.60.0.0   MAIN                                                              12/15/2021 21:03:00 PAGE 2   
 
-  55   1      
-  56   1        if (input_count == 2)
-  57   1        {
-  58   2          led_false = error;
-  59   2          led_true = ~error;
-  60   2          
-  61   2          while (1); // stay here forever
-  62   2        }
-  63   1        
-  64   1        input_count++; // increment input count
-  65   1        while (!input_submit); //wait until submit released
-  66   1      }
-  67          
-  68          int HoleWert()
-  69          {
-  70   1        return codes[selected_index][input_count];
-  71   1      }
+  55   1      }
 
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
-   CODE SIZE        =    122    ----
+   CODE SIZE        =     97    ----
    CONSTANT SIZE    =   ----    ----
    XDATA SIZE       =   ----    ----
    PDATA SIZE       =   ----    ----
-   DATA SIZE        =     32    ----
+   DATA SIZE        =     30    ----
    IDATA SIZE       =   ----    ----
    BIT SIZE         =   ----    ----
 END OF MODULE INFORMATION.
