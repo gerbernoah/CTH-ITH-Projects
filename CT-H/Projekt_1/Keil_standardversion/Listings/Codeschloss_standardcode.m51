@@ -1,0 +1,163 @@
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                    12/15/2021  21:12:32  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22.2.0, INVOKED BY:
+C:\KEIL_V5\C51\BIN\BL51.EXE .\Objects\STARTUP.obj, .\Objects\Main.obj TO .\Objects\Codeschloss_standardcode PRINT (.\Lis
+>> tings\Codeschloss_standardcode.m51) RAMSIZE (256)
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  .\Objects\STARTUP.obj (?C_STARTUP)
+  .\Objects\Main.obj (MAIN)
+  C:\KEIL_V5\C51\LIB\C51S.LIB (?C_INIT)
+
+
+LINK MAP OF MODULE:  .\Objects\Codeschloss_standardcode (?C_STARTUP)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            DATA    0008H     0020H     UNIT         ?DT?MAIN
+            IDATA   0028H     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+                    0003H     07FDH                  *** GAP ***
+            CODE    0800H     008CH     UNIT         ?C_C51STARTUP
+            CODE    088CH     0033H     UNIT         ?PR?PRUEFE?MAIN
+            CODE    08BFH     002CH     UNIT         ?PR?MAIN?MAIN
+            CODE    08EBH     001BH     UNIT         ?C_INITSEG
+            CODE    0906H     0015H     UNIT         ?PR?HOLEWERT?MAIN
+
+
+
+OVERLAY MAP OF MODULE:   .\Objects\Codeschloss_standardcode (?C_STARTUP)
+
+
+SEGMENT
+  +--> CALLED SEGMENT
+---------------------
+?C_C51STARTUP
+  +--> ?PR?MAIN?MAIN
+  +--> ?C_INITSEG
+
+?PR?MAIN?MAIN
+  +--> ?PR?PRUEFE?MAIN
+
+?PR?PRUEFE?MAIN
+  +--> ?PR?HOLEWERT?MAIN
+
+
+
+SYMBOL TABLE OF MODULE:  .\Objects\Codeschloss_standardcode (?C_STARTUP)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  12/15/2021  21:12:32  PAGE 2
+
+
+
+  -------         MODULE        ?C_STARTUP
+  C:0800H         SEGMENT       ?C_C51STARTUP
+  I:0028H         SEGMENT       ?STACK
+  C:0000H         PUBLIC        ?C_STARTUP
+  D:00E0H         SYMBOL        ACC
+  D:00F0H         SYMBOL        B
+  D:0083H         SYMBOL        DPH
+  D:0082H         SYMBOL        DPL
+  N:0000H         SYMBOL        IBPSTACK
+  N:0100H         SYMBOL        IBPSTACKTOP
+  N:0080H         SYMBOL        IDATALEN
+  C:0803H         SYMBOL        IDATALOOP
+  N:0000H         SYMBOL        PBPSTACK
+  N:0100H         SYMBOL        PBPSTACKTOP
+  N:0000H         SYMBOL        PDATALEN
+  N:0000H         SYMBOL        PDATASTART
+  N:0000H         SYMBOL        PPAGE
+  N:0000H         SYMBOL        PPAGEENABLE
+  D:00A0H         SYMBOL        PPAGE_SFR
+  D:0081H         SYMBOL        SP
+  C:0800H         SYMBOL        STARTUP1
+  N:0000H         SYMBOL        XBPSTACK
+  N:0000H         SYMBOL        XBPSTACKTOP
+  N:0000H         SYMBOL        XDATALEN
+  N:0000H         SYMBOL        XDATASTART
+  C:0000H         LINE#         126
+  C:0800H         LINE#         133
+  C:0802H         LINE#         134
+  C:0803H         LINE#         135
+  C:0804H         LINE#         136
+  C:0806H         LINE#         185
+  C:0809H         LINE#         196
+  -------         ENDMOD        ?C_STARTUP
+
+  -------         MODULE        MAIN
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:00B0H         PUBLIC        P3
+  D:0008H         PUBLIC        codes
+  D:0020H         PUBLIC        real_digit
+  B:00B0H.1       PUBLIC        led_false
+  C:08BFH         PUBLIC        main
+  B:00B0H.2       PUBLIC        input_submit
+  D:0022H         PUBLIC        error
+  C:0906H         PUBLIC        HoleWert
+  D:0090H         PUBLIC        input
+  D:00A0H         PUBLIC        output
+  B:00B0H.3       PUBLIC        dip_submit
+  D:0024H         PUBLIC        input_count
+  D:0026H         PUBLIC        selected_index
+  B:00B0H.0       PUBLIC        led_true
+  C:088CH         PUBLIC        Pruefe
+  -------         PROC          MAIN
+  C:08BFH         LINE#         34
+  C:08BFH         LINE#         35
+  C:08BFH         LINE#         36
+  C:08CEH         LINE#         38
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  12/15/2021  21:12:32  PAGE 3
+
+
+  C:08D1H         LINE#         39
+  C:08DBH         LINE#         41
+  C:08DBH         LINE#         42
+  C:08DBH         LINE#         43
+  C:08DEH         LINE#         44
+  C:08DEH         LINE#         45
+  C:08E4H         LINE#         46
+  C:08E6H         LINE#         47
+  C:08E9H         LINE#         48
+  -------         ENDPROC       MAIN
+  -------         PROC          PRUEFE
+  C:088CH         LINE#         51
+  C:088CH         LINE#         52
+  C:088CH         LINE#         53
+  C:0898H         LINE#         54
+  C:089EH         LINE#         56
+  C:08A6H         LINE#         57
+  C:08A6H         LINE#         58
+  C:08AEH         LINE#         59
+  C:08B1H         LINE#         61
+  C:08B3H         LINE#         62
+  C:08B3H         LINE#         64
+  C:08BBH         LINE#         65
+  C:08BEH         LINE#         66
+  -------         ENDPROC       PRUEFE
+  -------         PROC          HOLEWERT
+  C:0906H         LINE#         68
+  C:0906H         LINE#         69
+  C:0906H         LINE#         70
+  C:091AH         LINE#         71
+  -------         ENDPROC       HOLEWERT
+  -------         ENDMOD        MAIN
+
+******************************************************************************
+* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 009DH BYTE ( 7%) *
+******************************************************************************
+
+Program Size: data=41.0 xdata=0 code=286
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)
