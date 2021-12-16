@@ -10,9 +10,9 @@ This repository contains all projects of the subjects CT-H and IT-H-Labor.
 <img src="https://avatars.githubusercontent.com/u/82161986" alt="drawing" width="24"/> [Abdulmalik Deniz](https://github.com/Indianmicrosoftsupport)
 
 ## CT-H
-| Project | Title | Code |
-| :--- | :--- | :--- |
-| 1 ❌ | [Codeschloss](CT-H/Projekt_1/Projekt_1_Aufgabe.pdf) | - |
+| Project | Title | Docs | Code |
+| :--- | :--- | :--- | :--- |
+| 1 ✔ | [Codeschloss](CT-H/Projekt_1/Projekt_1_Aufgabe.pdf) | [![Docs](https://img.shields.io/badge/Docs-grey?style=for-the-badge&logo=MicrosoftWord)](CT-H/Projekt_1/Projekt_1_L%C3%B6sung.docx) | [![Default](https://img.shields.io/badge/Default-grey?style=for-the-badge&logo=C)](CT-H/Projekt_1/Keil_standardversion/Main.c) [![Advanced](https://img.shields.io/badge/Advanced-grey?style=for-the-badge&logo=C)](CT-H/Projekt_1/Keil/Main.c) |
 | 2 ❌ | [Kundenzufriedenheit](CT-H/Projekt_1/Projekt_2_Aufgabe.pdf) | - |
 
 ## IT-H-Labor
