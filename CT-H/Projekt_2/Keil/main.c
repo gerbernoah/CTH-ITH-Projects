@@ -10,7 +10,7 @@
 sfr input = 0x90;
 sfr output = 0xA0;
 unsigned int tic = 0;
-unsigned int value = 128;
+int value = 128;
 
 void ti() interrupt 3
 {
@@ -23,6 +23,8 @@ void ti() interrupt 3
 
 void init()
 {
+	output = 4;
+	input = 0;
 	TMOD = 0x10;
 	IE = 0x88;
 	TH1 = 0x3C;
@@ -39,9 +41,10 @@ void delay(unsigned int seconds)
 
 void main()
 {
-	init();
+init();
 	while(1)
 	{
+		while(input == 0);
 		//vorgegebene versoin mitels switch case (vereinfachung von if)
 		/*
 		switch(input)
@@ -51,7 +54,8 @@ void main()
 			case 4: value += 1; break;
 			case 8: value += 2; break;
 		}
-		*/
+	*/
+		
 		
 		//unsere version mitels funktion
 		value += (input*(-516+input*(364+input*(-77+5*input)))/112)*(!(input&(input-1)));
@@ -59,7 +63,10 @@ void main()
 		
 		
 		value = value > 255 ? 255:value; //makes value <= 255
-		output = 1 << ((value>30) + (value>100) + (value>155) + (value>225));
+		output = 1 << ((value>30) + (value>127) + (value>155) + (value>225));
+		
+		
 		delay(1);
+		while(input != 0);
 	}
 }
