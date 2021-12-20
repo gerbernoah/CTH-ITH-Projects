@@ -45,8 +45,8 @@ init();
 	while(1)
 	{
 		while(input == 0);
+		
 		//vorgegebene versoin mitels switch case (vereinfachung von if)
-		/*
 		switch(input)
 		{
 			case 1: value -= 2; break;
@@ -54,11 +54,10 @@ init();
 			case 4: value += 1; break;
 			case 8: value += 2; break;
 		}
-	*/
 		
 		
-		//unsere version mitels funktion
-		value += (input*(-516+input*(364+input*(-77+5*input)))/112)*(!(input&(input-1)));
+		//unsere version mitels funktion (funktioniert nicht auf jedem computer)
+		//value += (input*(-516+input*(364+input*(-77+5*input)))/112)*(!(input&(input-1)));
 
 		
 		
