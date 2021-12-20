@@ -47,23 +47,23 @@ init();
 		while(input == 0);
 		
 		//vorgegebene versoin mitels switch case (vereinfachung von if)
-		switch(input)
+		/*switch(input)
 		{
 			case 1: value -= 2; break;
 			case 2: value -= 1; break;
 			case 4: value += 1; break;
 			case 8: value += 2; break;
 		}
+		*/
 		
 		
 		//unsere version mitels funktion (funktioniert nicht auf jedem computer)
-		//value += (input*(-516+input*(364+input*(-77+5*input)))/112)*(!(input&(input-1)));
+		value += (input*(-516+input*(364+input*(-77+5*input)))/112)*(!(input&(input-1)));
 
 		
 		
 		value = value > 255 ? 255:value; //makes value <= 255
-		output = 1 << ((value>30) + (value>127) + (value>155) + (value>225));
-		
+		output = 1 << ((value>30) + (value>100) + (value>155) + (value>225));
 		
 		delay(1);
 		while(input != 0);
