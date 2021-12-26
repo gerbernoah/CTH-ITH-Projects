@@ -9,44 +9,53 @@
 
 sfr input = 0x90;
 sfr output = 0xA0;
-unsigned int tic = 0;
+
+unsigned int interruptCount = 0;
 int value = 128;
 
-void ti() interrupt 3
+// 3 = timer 1 überlauf
+void timerInterrupt() interrupt 3
 {
-	TR1 = 0;
-	TH1 = 0x3C;
+	TR1 = 0; // stoppt den timer
+	
+    // 50 ms
+    TH1 = 0x3C;         
 	TL1 = 0xB0;
-	tic++;
-	TR1 = 1;
+
+	interruptCount++;
+	
+    TR1 = 1; // startet den timer
 }
 
 void init()
 {
-	output = 4;
-	input = 0;
-	TMOD = 0x10;
-	IE = 0x88;
-	TH1 = 0x3C;
+    input = 0;      
+	output = 4;     // neutraler zustand
+	TMOD = 0x10;    // timer 1 modus 1
+	IE = 0x88;      // setzt die bits EA & ET1
+	
+    // 50 ms
+    TH1 = 0x3C;
 	TL1 = 0xB0;
 }
 
 void delay(unsigned int seconds)
 {
-	TR1 = 1;
-	while(tic < seconds*20);
-	tic = 0;
-	TR1 = 0;
+	TR1 = 1; // startet den timer
+	while (interruptCount < seconds * 20);
+	interruptCount = 0;
+	TR1 = 0; // stoppt den timer
 }
 
 void main()
 {
-init();
-	while(1)
+    init();
+
+	while (1) // endlosschleife
 	{
-		while(input == 0);
+		while (input == 0);
 		
-		//vorgegebene versoin mitels switch case (vereinfachung von if)
+		//vorgegebene version mittels switch case (vereinfachung von if)
 		/*switch(input)
 		{
 			case 1: value -= 2; break;
@@ -56,16 +65,14 @@ init();
 		}
 		*/
 		
-		
-		//unsere version mitels funktion (funktioniert nicht auf jedem computer)
+		// unsere version mittels funktion (funktioniert nicht auf jedem computer)
 		value += (input*(-516+input*(364+input*(-77+5*input)))/112)*(!(input&(input-1)));
 
-		
-		
-		value = value > 255 ? 255:value; //makes value <= 255
+		value = value > 255 ? 255:value; // setzt value <= 255
 		output = 1 << ((value>30) + (value>100) + (value>155) + (value>225));
 		
 		delay(1);
-		while(input != 0);
+
+		while (input != 0);
 	}
 }
