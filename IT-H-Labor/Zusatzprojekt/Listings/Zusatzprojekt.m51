@@ -1,4 +1,4 @@
-BL51 BANKED LINKER/LOCATER V6.22.2.0                                                    01/09/2022  20:09:54  PAGE 1
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                    01/09/2022  21:25:41  PAGE 1
 
 
 BL51 BANKED LINKER/LOCATER V6.22.2.0, INVOKED BY:
@@ -31,11 +31,15 @@ LINK MAP OF MODULE:  .\Objects\Zusatzprojekt (?C_STARTUP)
             * * * * * * *   C O D E   M E M O R Y   * * * * * * *
             CODE    0000H     0003H     ABSOLUTE     
             CODE    0003H     0003H     ABSOLUTE     
-                    0006H     07FAH                  *** GAP ***
+                    0006H     000DH                  *** GAP ***
+            CODE    0013H     0003H     ABSOLUTE     
+                    0016H     07EAH                  *** GAP ***
             CODE    0800H     009DH     UNIT         ?C?LIB_CODE
-            CODE    089DH     006BH     UNIT         ?PR?IR?MAIN
-            CODE    0908H     0010H     UNIT         ?PR?MAIN?MAIN
-            CODE    0918H     000CH     UNIT         ?C_C51STARTUP
+            CODE    089DH     0044H     UNIT         ?PR?IR1?MAIN
+            CODE    08E1H     003DH     UNIT         ?PR?IR2?MAIN
+            CODE    091EH     002DH     UNIT         ?PR?AUSGABE?MAIN
+            CODE    094BH     0012H     UNIT         ?PR?MAIN?MAIN
+            CODE    095DH     000CH     UNIT         ?C_C51STARTUP
 
 
 
@@ -48,6 +52,19 @@ SEGMENT
 ?C_C51STARTUP
   +--> ?PR?MAIN?MAIN
 
+*** NEW ROOT ***************************************************
+
+?PR?IR1?MAIN
+  +--> ?PR?AUSGABE?MAIN
+
+*** NEW ROOT ***************************************************
+
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  01/09/2022  21:25:41  PAGE 2
+
+
+?PR?IR2?MAIN
+  +--> ?PR?AUSGABE?MAIN
+
 
 
 SYMBOL TABLE OF MODULE:  .\Objects\Zusatzprojekt (?C_STARTUP)
@@ -56,12 +73,9 @@ SYMBOL TABLE OF MODULE:  .\Objects\Zusatzprojekt (?C_STARTUP)
   ----------------------------------
 
   -------         MODULE        ?C_STARTUP
-  C:0918H         SEGMENT       ?C_C51STARTUP
+  C:095DH         SEGMENT       ?C_C51STARTUP
   I:000AH         SEGMENT       ?STACK
   C:0000H         PUBLIC        ?C_STARTUP
-BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  01/09/2022  20:09:54  PAGE 2
-
-
   D:00E0H         SYMBOL        ACC
   D:00F0H         SYMBOL        B
   D:0083H         SYMBOL        DPH
@@ -69,7 +83,7 @@ SYMBOL TABLE OF MODULE:  .\Objects\Zusatzprojekt (?C_STARTUP)
   N:0000H         SYMBOL        IBPSTACK
   N:0100H         SYMBOL        IBPSTACKTOP
   N:0080H         SYMBOL        IDATALEN
-  C:091BH         SYMBOL        IDATALOOP
+  C:0960H         SYMBOL        IDATALOOP
   N:0000H         SYMBOL        PBPSTACK
   N:0100H         SYMBOL        PBPSTACKTOP
   N:0000H         SYMBOL        PDATALEN
@@ -78,53 +92,70 @@ SYMBOL TABLE OF MODULE:  .\Objects\Zusatzprojekt (?C_STARTUP)
   N:0000H         SYMBOL        PPAGEENABLE
   D:00A0H         SYMBOL        PPAGE_SFR
   D:0081H         SYMBOL        SP
-  C:0918H         SYMBOL        STARTUP1
+  C:095DH         SYMBOL        STARTUP1
   N:0000H         SYMBOL        XBPSTACK
   N:0000H         SYMBOL        XBPSTACKTOP
   N:0000H         SYMBOL        XDATALEN
   N:0000H         SYMBOL        XDATASTART
   C:0000H         LINE#         126
-  C:0918H         LINE#         133
-  C:091AH         LINE#         134
-  C:091BH         LINE#         135
-  C:091CH         LINE#         136
-  C:091EH         LINE#         185
-  C:0921H         LINE#         196
+  C:095DH         LINE#         133
+  C:095FH         LINE#         134
+  C:0960H         LINE#         135
+  C:0961H         LINE#         136
+  C:0963H         LINE#         185
+  C:0966H         LINE#         196
   -------         ENDMOD        ?C_STARTUP
 
   -------         MODULE        MAIN
   C:0000H         SYMBOL        _ICE_DUMMY_
   D:00A0H         PUBLIC        P2
-  C:0908H         PUBLIC        Main
+  C:094BH         PUBLIC        Main
   D:00A8H         PUBLIC        IE
   D:0008H         PUBLIC        count
-  C:089DH         PUBLIC        Ir
+  C:091EH         PUBLIC        Ausgabe
   B:0088H.0       PUBLIC        IT0
+  B:0088H.2       PUBLIC        IT1
+  C:089DH         PUBLIC        Ir1
+  C:08E1H         PUBLIC        Ir2
   -------         PROC          MAIN
-  C:0908H         LINE#         6
-  C:0908H         LINE#         7
-  C:0908H         LINE#         8
-  C:0911H         LINE#         9
-  C:0914H         LINE#         10
-  C:0916H         LINE#         11
+  C:094BH         LINE#         6
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  01/09/2022  21:25:41  PAGE 3
+
+
+  C:094BH         LINE#         7
+  C:094BH         LINE#         8
+  C:0954H         LINE#         9
+  C:0957H         LINE#         10
+  C:0959H         LINE#         11
+  C:095BH         LINE#         12
   -------         ENDPROC       MAIN
-  -------         PROC          IR
+  -------         PROC          AUSGABE
   -------         DO            
   D:0002H         SYMBOL        tens
   D:0004H         SYMBOL        ones
   -------         ENDDO         
-  C:089DH         LINE#         14
-  C:08B4H         LINE#         17
-  C:08BCH         LINE#         18
-  C:08C7H         LINE#         20
-  C:08D4H         LINE#         21
-  C:08E2H         LINE#         23
-BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  01/09/2022  20:09:54  PAGE 3
-
-
-  C:08ECH         LINE#         24
-  C:08F3H         LINE#         25
-  -------         ENDPROC       IR
+  C:091EH         LINE#         15
+  C:091EH         LINE#         16
+  C:091EH         LINE#         18
+  C:092BH         LINE#         19
+  C:0939H         LINE#         21
+  C:0943H         LINE#         22
+  C:094AH         LINE#         23
+  -------         ENDPROC       AUSGABE
+  -------         PROC          IR1
+  C:089DH         LINE#         25
+  C:08B4H         LINE#         27
+  C:08C1H         LINE#         29
+  C:08C9H         LINE#         30
+  C:08CCH         LINE#         31
+  -------         ENDPROC       IR1
+  -------         PROC          IR2
+  C:08E1H         LINE#         33
+  C:08F8H         LINE#         36
+  C:08FEH         LINE#         38
+  C:0906H         LINE#         39
+  C:0909H         LINE#         40
+  -------         ENDPROC       IR2
   -------         ENDMOD        MAIN
 
   -------         MODULE        ?C?IMUL
@@ -140,8 +171,8 @@ SYMBOL TABLE OF MODULE:  .\Objects\Zusatzprojekt (?C_STARTUP)
   -------         ENDMOD        ?C?UIDIV
 
 ******************************************************************************
-* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 008DH BYTE ( 6%) *
+* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 00D5H BYTE (10%) *
 ******************************************************************************
 
-Program Size: data=11.0 xdata=0 code=298
+Program Size: data=11.0 xdata=0 code=370
 LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)
