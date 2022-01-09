@@ -1,0 +1,4 @@
+".\Objects\STARTUP.obj",
+".\Objects\main.obj" 
+TO ".\Objects\Projekt3_Aufgabe_Balkenanzeige" 
+PRINT(".\Listings\Projekt3_Aufgabe_Balkenanzeige.m51") RAMSIZE(256) 
