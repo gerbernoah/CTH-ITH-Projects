@@ -1,0 +1,147 @@
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                    01/09/2022  20:09:54  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22.2.0, INVOKED BY:
+C:\KEIL_V5\C51\BIN\BL51.EXE .\Objects\STARTUP.obj, .\Objects\Main.obj TO .\Objects\Zusatzprojekt PRINT (.\Listings\Zusat
+>> zprojekt.m51) RAMSIZE (256)
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  .\Objects\STARTUP.obj (?C_STARTUP)
+  .\Objects\Main.obj (MAIN)
+  C:\KEIL_V5\C51\LIB\C51S.LIB (?C?IMUL)
+  C:\KEIL_V5\C51\LIB\C51S.LIB (?C?SIDIV)
+  C:\KEIL_V5\C51\LIB\C51S.LIB (?C?UIDIV)
+
+
+LINK MAP OF MODULE:  .\Objects\Zusatzprojekt (?C_STARTUP)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            DATA    0008H     0002H     UNIT         ?DT?MAIN
+            IDATA   000AH     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+            CODE    0003H     0003H     ABSOLUTE     
+                    0006H     07FAH                  *** GAP ***
+            CODE    0800H     009DH     UNIT         ?C?LIB_CODE
+            CODE    089DH     006BH     UNIT         ?PR?IR?MAIN
+            CODE    0908H     0010H     UNIT         ?PR?MAIN?MAIN
+            CODE    0918H     000CH     UNIT         ?C_C51STARTUP
+
+
+
+OVERLAY MAP OF MODULE:   .\Objects\Zusatzprojekt (?C_STARTUP)
+
+
+SEGMENT
+  +--> CALLED SEGMENT
+---------------------
+?C_C51STARTUP
+  +--> ?PR?MAIN?MAIN
+
+
+
+SYMBOL TABLE OF MODULE:  .\Objects\Zusatzprojekt (?C_STARTUP)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        ?C_STARTUP
+  C:0918H         SEGMENT       ?C_C51STARTUP
+  I:000AH         SEGMENT       ?STACK
+  C:0000H         PUBLIC        ?C_STARTUP
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  01/09/2022  20:09:54  PAGE 2
+
+
+  D:00E0H         SYMBOL        ACC
+  D:00F0H         SYMBOL        B
+  D:0083H         SYMBOL        DPH
+  D:0082H         SYMBOL        DPL
+  N:0000H         SYMBOL        IBPSTACK
+  N:0100H         SYMBOL        IBPSTACKTOP
+  N:0080H         SYMBOL        IDATALEN
+  C:091BH         SYMBOL        IDATALOOP
+  N:0000H         SYMBOL        PBPSTACK
+  N:0100H         SYMBOL        PBPSTACKTOP
+  N:0000H         SYMBOL        PDATALEN
+  N:0000H         SYMBOL        PDATASTART
+  N:0000H         SYMBOL        PPAGE
+  N:0000H         SYMBOL        PPAGEENABLE
+  D:00A0H         SYMBOL        PPAGE_SFR
+  D:0081H         SYMBOL        SP
+  C:0918H         SYMBOL        STARTUP1
+  N:0000H         SYMBOL        XBPSTACK
+  N:0000H         SYMBOL        XBPSTACKTOP
+  N:0000H         SYMBOL        XDATALEN
+  N:0000H         SYMBOL        XDATASTART
+  C:0000H         LINE#         126
+  C:0918H         LINE#         133
+  C:091AH         LINE#         134
+  C:091BH         LINE#         135
+  C:091CH         LINE#         136
+  C:091EH         LINE#         185
+  C:0921H         LINE#         196
+  -------         ENDMOD        ?C_STARTUP
+
+  -------         MODULE        MAIN
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:00A0H         PUBLIC        P2
+  C:0908H         PUBLIC        Main
+  D:00A8H         PUBLIC        IE
+  D:0008H         PUBLIC        count
+  C:089DH         PUBLIC        Ir
+  B:0088H.0       PUBLIC        IT0
+  -------         PROC          MAIN
+  C:0908H         LINE#         6
+  C:0908H         LINE#         7
+  C:0908H         LINE#         8
+  C:0911H         LINE#         9
+  C:0914H         LINE#         10
+  C:0916H         LINE#         11
+  -------         ENDPROC       MAIN
+  -------         PROC          IR
+  -------         DO            
+  D:0002H         SYMBOL        tens
+  D:0004H         SYMBOL        ones
+  -------         ENDDO         
+  C:089DH         LINE#         14
+  C:08B4H         LINE#         17
+  C:08BCH         LINE#         18
+  C:08C7H         LINE#         20
+  C:08D4H         LINE#         21
+  C:08E2H         LINE#         23
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  01/09/2022  20:09:54  PAGE 3
+
+
+  C:08ECH         LINE#         24
+  C:08F3H         LINE#         25
+  -------         ENDPROC       IR
+  -------         ENDMOD        MAIN
+
+  -------         MODULE        ?C?IMUL
+  C:0800H         PUBLIC        ?C?IMUL
+  -------         ENDMOD        ?C?IMUL
+
+  -------         MODULE        ?C?SIDIV
+  C:0812H         PUBLIC        ?C?SIDIV
+  -------         ENDMOD        ?C?SIDIV
+
+  -------         MODULE        ?C?UIDIV
+  C:0848H         PUBLIC        ?C?UIDIV
+  -------         ENDMOD        ?C?UIDIV
+
+******************************************************************************
+* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 008DH BYTE ( 6%) *
+******************************************************************************
+
+Program Size: data=11.0 xdata=0 code=298
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)
