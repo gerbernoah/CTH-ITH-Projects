@@ -56,17 +56,17 @@ void main()
 		while (input == 0);
 		
 		//vorgegebene version mittels switch case (vereinfachung von if)
-		/*switch(input)
+		switch(input)
 		{
 			case 1: value -= 2; break;
 			case 2: value -= 1; break;
 			case 4: value += 1; break;
 			case 8: value += 2; break;
 		}
-		*/
+		
 		
 		// unsere version mittels funktion (funktioniert nicht auf jedem computer)
-		value += (input*(-516+input*(364+input*(-77+5*input)))/112)*(!(input&(input-1)));
+		//value += (input*(-516+input*(364+input*(-77+5*input)))/112)*(!(input&(input-1)));
 
 		value = value > 255 ? 255:value; // setzt value <= 255
 		output = 1 << ((value>30) + (value>100) + (value>155) + (value>225));
