@@ -1,0 +1,91 @@
+C51 COMPILER V9.60.0.0   MAIN                                                              05/19/2022 14:34:29 PAGE 1   
+
+
+C51 COMPILER V9.60.0.0, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN .\Objects\main.obj
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE main.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listings\main
+                    -.lst) TABS(2) OBJECT(.\Objects\main.obj)
+
+line level    source
+
+   1          #include <reg51.h>
+   2          #include <stdio.h>
+   3          
+   4          unsigned int ziffer[] = {0, 8, 1, 5};
+   5          int interruptCount;
+   6          int index = 0;
+   7          int end = 1;
+   8          int count;
+   9          sbit impuls = P2^0;
+  10          sbit schalter = P2^1;
+  11          sbit notfall = P2^2;
+  12          
+  13          void init() {
+  14   1        TMOD = 0x10;
+  15   1        IE = 0x88;
+  16   1        P2 = 0;
+  17   1      }
+  18          
+  19          void timerInterrupt() interrupt 3
+  20          {
+  21   1        TR1 = 0; // stoppt den timer
+  22   1        TH1 = 0x3C;         // 50 ms
+  23   1        TL1 = 0xB0;
+  24   1        interruptCount++;
+  25   1        TR1 = 1; // startet den timer
+  26   1      }
+  27          
+  28          void delay(float seconds)
+  29          {
+  30   1        TR1 = 1; // startet den timer
+  31   1        while (interruptCount < seconds * 20);
+  32   1        interruptCount = 0;
+  33   1        TR1 = 0; // stoppt den timer
+  34   1      }
+  35          
+  36          void main() {
+  37   1        init();
+  38   1        while (end) {
+  39   2          while(schalter == 0);
+  40   2          if (P1 != 0xFF)
+  41   2            continue;
+  42   2            
+  43   2          if (ziffer[index] == 0)
+  44   2            count = 10;
+  45   2          else
+  46   2            count = ziffer[index];
+  47   2          count = count * 2;
+  48   2        }
+  49   1        
+  50   1        for (;count > 0; count--)
+  51   1        {
+  52   2          impuls = 1;
+  53   2          delay(0.2);
+  54   2          impuls = 1;
+C51 COMPILER V9.60.0.0   MAIN                                                              05/19/2022 14:34:29 PAGE 2   
+
+  55   2          delay(0.2);
+  56   2        }
+  57   1          if (index == 4) {
+  58   2            end = 0;
+  59   2            notfall = 1;
+  60   2          }
+  61   1        while(1);
+  62   1      }
+  63          
+  64          
+  65          
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    218    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =     16       4
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

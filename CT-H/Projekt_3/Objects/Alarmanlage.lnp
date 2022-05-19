@@ -1,0 +1,4 @@
+".\Objects\STARTUP.obj",
+".\Objects\main.obj" 
+TO ".\Objects\Alarmanlage" 
+PRINT(".\Listings\Alarmanlage.m51") RAMSIZE(256) 
