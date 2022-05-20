@@ -4,11 +4,10 @@
 unsigned int ziffer[] = {0, 8, 1, 5};
 int interruptCount;
 int index = 0;
-int end = 1;
 int count;
 sbit impuls = P2^0;
 sbit schalter = P2^1;
-sbit notfall = P2^2;
+sbit end = P2^2;
 
 void init() {
 	TMOD = 0x10;
@@ -35,30 +34,26 @@ void delay(float seconds)
 
 void main() {
 	init();
-	while (end) {
-		while(schalter == 0);
-		if (P1 != 0xFF)
-			continue;
-			
+	while (!end) {
+		while(schalter == 0 || P1 == 0xFF);
 		if (ziffer[index] == 0)
 			count = 10;
 		else
 			count = ziffer[index];
 		count = count * 2;
-	}
 	
-	for (;count > 0; count--)
-	{
-		impuls = 1;
-		delay(0.2);
-		impuls = 1;
-		delay(0.2);
-	}
-		if (index == 4) {
-			end = 0;
-			notfall = 1;
+		for (;count > 0; count--)
+		{
+			impuls = 1;
+			delay(0.2);
+			impuls = 0;
+			delay(0.2);
 		}
-	while(1);
+		index++;
+			if (index == 4)
+				end = 1;
+		while(1);
+	}
 }
 
 
