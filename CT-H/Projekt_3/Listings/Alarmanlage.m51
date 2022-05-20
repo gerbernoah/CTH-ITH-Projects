@@ -1,4 +1,4 @@
-BL51 BANKED LINKER/LOCATER V6.22.2.0                                                    05/20/2022  12:09:54  PAGE 1
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                    05/20/2022  21:28:16  PAGE 1
 
 
 BL51 BANKED LINKER/LOCATER V6.22.2.0, INVOKED BY:
@@ -6,18 +6,13 @@ C:\KEIL_V5\C51\BIN\BL51.EXE .\Objects\STARTUP.obj, .\Objects\main.obj TO .\Objec
 >> lage.m51) RAMSIZE (256)
 
 
-MEMORY MODEL: SMALL WITH FLOATING POINT ARITHMETIC
+MEMORY MODEL: SMALL
 
 
 INPUT MODULES INCLUDED:
   .\Objects\STARTUP.obj (?C_STARTUP)
   .\Objects\main.obj (MAIN)
-  C:\KEIL_V5\C51\LIB\C51FPS.LIB (?C?FPMUL)
-  C:\KEIL_V5\C51\LIB\C51FPS.LIB (?C?FPCMP)
-  C:\KEIL_V5\C51\LIB\C51FPS.LIB (?C?FCAST)
-  C:\KEIL_V5\C51\LIB\C51FPS.LIB (?C?FPGETOPN)
   C:\KEIL_V5\C51\LIB\C51S.LIB (?C_INIT)
-  C:\KEIL_V5\C51\LIB\C51S.LIB (?C?LNEG)
 
 
 LINK MAP OF MODULE:  .\Objects\Alarmanlage (?C_STARTUP)
@@ -29,42 +24,42 @@ LINK MAP OF MODULE:  .\Objects\Alarmanlage (?C_STARTUP)
             * * * * * * *   D A T A   M E M O R Y   * * * * * * *
             REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
             DATA    0008H     000EH     UNIT         ?DT?MAIN
-            DATA    0016H     0004H     UNIT         _DATA_GROUP_
-            IDATA   001AH     0001H     UNIT         ?STACK
+            IDATA   0016H     0001H     UNIT         ?STACK
 
             * * * * * * *   C O D E   M E M O R Y   * * * * * * *
             CODE    0000H     0003H     ABSOLUTE     
                     0003H     0018H                  *** GAP ***
             CODE    001BH     0003H     ABSOLUTE     
                     001EH     07E2H                  *** GAP ***
-            CODE    0800H     0215H     UNIT         ?C?LIB_CODE
-            CODE    0A15H     008CH     UNIT         ?C_C51STARTUP
-            CODE    0AA1H     0068H     UNIT         ?PR?MAIN?MAIN
-            CODE    0B09H     0051H     UNIT         ?PR?_DELAY?MAIN
-            CODE    0B5AH     0017H     UNIT         ?PR?TIMERINTERRUPT?MAIN
-            CODE    0B71H     000FH     UNIT         ?C_INITSEG
-            CODE    0B80H     000AH     UNIT         ?PR?INIT?MAIN
+            CODE    0800H     008CH     UNIT         ?C_C51STARTUP
+            CODE    088CH     0067H     UNIT         ?PR?MAIN?MAIN
+            CODE    08F3H     0019H     UNIT         ?PR?_DELAY?MAIN
+            CODE    090CH     0017H     UNIT         ?PR?TIMERINTERRUPT?MAIN
+            CODE    0923H     000FH     UNIT         ?C_INITSEG
+            CODE    0932H     000EH     UNIT         ?PR?_MAKE_IMPULS?MAIN
+            CODE    0940H     000AH     UNIT         ?PR?INIT?MAIN
 
 
 
 OVERLAY MAP OF MODULE:   .\Objects\Alarmanlage (?C_STARTUP)
 
 
-SEGMENT                           DATA_GROUP 
-  +--> CALLED SEGMENT           START    LENGTH
------------------------------------------------
-?C_C51STARTUP                   -----    -----
+SEGMENT
+  +--> CALLED SEGMENT
+---------------------
+?C_C51STARTUP
   +--> ?PR?MAIN?MAIN
   +--> ?C_INITSEG
 
-?PR?MAIN?MAIN                   -----    -----
+?PR?MAIN?MAIN
   +--> ?PR?INIT?MAIN
-BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  05/20/2022  12:09:54  PAGE 2
+  +--> ?PR?_MAKE_IMPULS?MAIN
 
-
+?PR?_MAKE_IMPULS?MAIN
   +--> ?PR?_DELAY?MAIN
 
-?PR?_DELAY?MAIN                 0016H    0004H
+
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  05/20/2022  21:28:16  PAGE 2
 
 
 
@@ -74,8 +69,8 @@ SYMBOL TABLE OF MODULE:  .\Objects\Alarmanlage (?C_STARTUP)
   ----------------------------------
 
   -------         MODULE        ?C_STARTUP
-  C:0A15H         SEGMENT       ?C_C51STARTUP
-  I:001AH         SEGMENT       ?STACK
+  C:0800H         SEGMENT       ?C_C51STARTUP
+  I:0016H         SEGMENT       ?STACK
   C:0000H         PUBLIC        ?C_STARTUP
   D:00E0H         SYMBOL        ACC
   D:00F0H         SYMBOL        B
@@ -84,7 +79,7 @@ SYMBOL TABLE OF MODULE:  .\Objects\Alarmanlage (?C_STARTUP)
   N:0000H         SYMBOL        IBPSTACK
   N:0100H         SYMBOL        IBPSTACKTOP
   N:0080H         SYMBOL        IDATALEN
-  C:0A18H         SYMBOL        IDATALOOP
+  C:0803H         SYMBOL        IDATALOOP
   N:0000H         SYMBOL        PBPSTACK
   N:0100H         SYMBOL        PBPSTACKTOP
   N:0000H         SYMBOL        PDATALEN
@@ -93,18 +88,18 @@ SYMBOL TABLE OF MODULE:  .\Objects\Alarmanlage (?C_STARTUP)
   N:0000H         SYMBOL        PPAGEENABLE
   D:00A0H         SYMBOL        PPAGE_SFR
   D:0081H         SYMBOL        SP
-  C:0A15H         SYMBOL        STARTUP1
+  C:0800H         SYMBOL        STARTUP1
   N:0000H         SYMBOL        XBPSTACK
   N:0000H         SYMBOL        XBPSTACKTOP
   N:0000H         SYMBOL        XDATALEN
   N:0000H         SYMBOL        XDATASTART
   C:0000H         LINE#         126
-  C:0A15H         LINE#         133
-  C:0A17H         LINE#         134
-  C:0A18H         LINE#         135
-  C:0A19H         LINE#         136
-  C:0A1BH         LINE#         185
-  C:0A1EH         LINE#         196
+  C:0800H         LINE#         133
+  C:0802H         LINE#         134
+  C:0803H         LINE#         135
+  C:0804H         LINE#         136
+  C:0806H         LINE#         185
+  C:0809H         LINE#         196
   -------         ENDMOD        ?C_STARTUP
 
   -------         MODULE        MAIN
@@ -114,100 +109,82 @@ SYMBOL TABLE OF MODULE:  .\Objects\Alarmanlage (?C_STARTUP)
   D:00A0H         PUBLIC        P2
   D:000AH         PUBLIC        ziffer
   D:00A8H         PUBLIC        IE
-  C:0B11H         PUBLIC        _delay
+  C:08F3H         PUBLIC        _delay
   D:0012H         PUBLIC        index
   B:00A0H.0       PUBLIC        impuls
-  C:0AA1H         PUBLIC        main
+  C:0932H         PUBLIC        _make_impuls
+  C:088CH         PUBLIC        main
   D:0014H         PUBLIC        count
-BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  05/20/2022  12:09:54  PAGE 3
-
-
   D:0089H         PUBLIC        TMOD
-  C:0B80H         PUBLIC        init
+  C:0940H         PUBLIC        init
   B:00A0H.2       PUBLIC        end
   D:008DH         PUBLIC        TH1
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  05/20/2022  21:28:16  PAGE 3
+
+
   D:008BH         PUBLIC        TL1
   B:0088H.6       PUBLIC        TR1
   B:00A0H.1       PUBLIC        schalter
-  C:0B5AH         PUBLIC        timerInterrupt
+  C:090CH         PUBLIC        timerInterrupt
   -------         PROC          INIT
-  C:0B80H         LINE#         12
-  C:0B80H         LINE#         13
-  C:0B83H         LINE#         14
-  C:0B86H         LINE#         15
-  C:0B89H         LINE#         16
+  C:0940H         LINE#         12
+  C:0940H         LINE#         13
+  C:0943H         LINE#         14
+  C:0946H         LINE#         15
+  C:0949H         LINE#         16
   -------         ENDPROC       INIT
   -------         PROC          TIMERINTERRUPT
-  C:0B5AH         LINE#         18
-  C:0B5CH         LINE#         20
-  C:0B5EH         LINE#         21
-  C:0B61H         LINE#         22
-  C:0B64H         LINE#         23
-  C:0B6CH         LINE#         24
-  C:0B6EH         LINE#         25
+  C:090CH         LINE#         18
+  C:090EH         LINE#         20
+  C:0910H         LINE#         21
+  C:0913H         LINE#         22
+  C:0916H         LINE#         23
+  C:091EH         LINE#         24
+  C:0920H         LINE#         25
   -------         ENDPROC       TIMERINTERRUPT
-  -------         PROC          L?0023
-  -------         ENDPROC       L?0023
   -------         PROC          _DELAY
-  D:0016H         SYMBOL        seconds
-  C:0B11H         LINE#         27
-  C:0B19H         LINE#         28
-  C:0B19H         LINE#         29
-  C:0B1BH         LINE#         30
-  C:0B52H         LINE#         31
-  C:0B57H         LINE#         32
-  C:0B59H         LINE#         33
+  D:0006H         SYMBOL        ms_50
+  C:08F3H         LINE#         27
+  C:08F3H         LINE#         28
+  C:08F3H         LINE#         29
+  C:08F5H         LINE#         30
+  C:0904H         LINE#         31
+  C:0909H         LINE#         32
+  C:090BH         LINE#         33
   -------         ENDPROC       _DELAY
+  -------         PROC          _MAKE_IMPULS
+  D:0004H         SYMBOL        ms_50
+  C:0932H         LINE#         35
+  C:0936H         LINE#         36
+  C:0936H         LINE#         37
+  C:0938H         LINE#         38
+  C:093BH         LINE#         39
+  C:093DH         LINE#         40
+  -------         ENDPROC       _MAKE_IMPULS
   -------         PROC          MAIN
-  C:0AA1H         LINE#         35
-  C:0AA1H         LINE#         36
-  C:0AA4H         LINE#         37
-  C:0AA7H         LINE#         38
-  C:0AB0H         LINE#         39
-  C:0ABFH         LINE#         40
-  C:0AC6H         LINE#         42
-  C:0ACAH         LINE#         43
-  C:0AD5H         LINE#         45
-  C:0AE2H         LINE#         46
-  C:0AE2H         LINE#         47
-  C:0AE4H         LINE#         48
-  C:0AE7H         LINE#         49
-  C:0AE9H         LINE#         50
-  C:0AECH         LINE#         51
-  C:0AF6H         LINE#         52
-  C:0AFEH         LINE#         53
-  C:0B04H         LINE#         54
-  C:0B06H         LINE#         55
-  C:0B08H         LINE#         56
-BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  05/20/2022  12:09:54  PAGE 4
-
-
-  C:0B08H         LINE#         57
+  C:088CH         LINE#         43
+  C:088CH         LINE#         44
+  C:088FH         LINE#         45
+  C:0898H         LINE#         46
+  C:089DH         LINE#         47
+  C:089DH         LINE#         48
+  C:08ACH         LINE#         49
+  C:08B3H         LINE#         51
+  C:08B7H         LINE#         53
+  C:08C4H         LINE#         54
+  C:08D5H         LINE#         55
+  C:08DCH         LINE#         56
+  C:08EFH         LINE#         57
+  C:08F1H         LINE#         58
   -------         ENDPROC       MAIN
   -------         ENDMOD        MAIN
 
-  -------         MODULE        ?C?FPMUL
-  C:0800H         PUBLIC        ?C?FPMUL
-  -------         ENDMOD        ?C?FPMUL
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  05/20/2022  21:28:16  PAGE 4
 
-  -------         MODULE        ?C?FPCMP
-  C:0908H         PUBLIC        ?C?FPCMP
-  C:0906H         PUBLIC        ?C?FPCMP3
-  -------         ENDMOD        ?C?FPCMP
-
-  -------         MODULE        ?C?FCAST
-  C:0989H         PUBLIC        ?C?FCASTC
-  C:0984H         PUBLIC        ?C?FCASTI
-  C:097FH         PUBLIC        ?C?FCASTL
-  -------         ENDMOD        ?C?FCAST
-
-  -------         MODULE        ?C?LNEG
-  C:0A07H         PUBLIC        ?C?LNEG
-  -------         ENDMOD        ?C?LNEG
 
 ******************************************************************************
-* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 00FAH BYTE (12%) *
+* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 00CFH BYTE (10%) *
 ******************************************************************************
 
-Program Size: data=27.0 xdata=0 code=912
+Program Size: data=23.0 xdata=0 code=336
 LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

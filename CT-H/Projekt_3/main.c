@@ -24,36 +24,38 @@ void timerInterrupt() interrupt 3
 	TR1 = 1; // startet den timer
 }
 
-void delay(float seconds)
+void delay(int ms_50)
 {
 	TR1 = 1; // startet den timer
-	while (interruptCount < seconds * 20);
+	while (interruptCount < ms_50);
 	interruptCount = 0;
 	TR1 = 0; // stoppt den timer
 }
 
+void make_impuls(int ms_50)
+{
+	impuls = 1;
+	delay(ms_50);
+	impuls = 0;
+	delay(ms_50);
+}
+
 void main() {
 	init();
-	while (!end) {
-		while(schalter == 0 || P1 == 0xFF);
+	while(schalter == 0 || P1 == 0xFF);
+	for (index = 0; index < 4; index++)
+	{
 		if (ziffer[index] == 0)
 			count = 10;
 		else
 			count = ziffer[index];
-		count = count * 2;
-	
+		
 		for (;count > 0; count--)
-		{
-			impuls = 1;
-			delay(0.2);
-			impuls = 0;
-			delay(0.2);
-		}
-		index++;
-			if (index == 4)
-				end = 1;
-		while(1);
+			make_impuls(1);
+		make_impuls(4);
 	}
+	end = 1;
+	while(1);
 }
 
 
